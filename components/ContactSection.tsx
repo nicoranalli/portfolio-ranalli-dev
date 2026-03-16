@@ -13,7 +13,7 @@ const socialContacts = [
 ]
 
 export default function ContactSection() {
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' })
+  const [formData, setFormData] = useState({ name: '', message: '' })
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle')
 
   const handleSubmit = (e: FormEvent) => {
@@ -22,13 +22,13 @@ export default function ContactSection() {
 
     const subject = encodeURIComponent(`Contacto desde Portfolio - ${formData.name}`)
     const body = encodeURIComponent(
-      `Nombre: ${formData.name}\nEmail: ${formData.email}\n\nMensaje:\n${formData.message}`
+      `${formData.message}`
     )
     const mailtoLink = `mailto:nicoranalli9@gmail.com?subject=${subject}&body=${body}`
 
     window.open(mailtoLink, '_blank')
     setStatus('sent')
-    setFormData({ name: '', email: '', message: '' })
+    setFormData({ name: '', message: '' })
 
     setTimeout(() => setStatus('idle'), 4000)
   }
@@ -55,19 +55,6 @@ export default function ContactSection() {
                   placeholder="Tu nombre"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  required
-                  className="bg-[#092749]/30 border-[#7EA3CC]/20 text-[#f0f4f8] placeholder:text-[#5a7a96] rounded-xl h-11 px-4 focus-visible:border-[#7EA3CC] focus-visible:ring-[#7EA3CC]/30"
-                />
-              </div>
-              <div>
-                <label className="text-sm font-semibold text-[#f0f4f8] mb-2 block">
-                  Email
-                </label>
-                <Input
-                  type="email"
-                  placeholder="tu@email.com"
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   required
                   className="bg-[#092749]/30 border-[#7EA3CC]/20 text-[#f0f4f8] placeholder:text-[#5a7a96] rounded-xl h-11 px-4 focus-visible:border-[#7EA3CC] focus-visible:ring-[#7EA3CC]/30"
                 />
