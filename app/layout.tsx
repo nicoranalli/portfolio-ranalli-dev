@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Portfolio | Desarrollador Full Stack",
-  description: "Portfolio personal de desarrollo web. Proyectos, stack tecnológico y contacto.",
+  title: "Portfolio | Nicolás Ranalli",
+  description: "Portfolio personal de un Estudiante de Ingeniería en Sistemas",
 };
 
 export default function RootLayout({

@@ -14,7 +14,7 @@ export default function HeroSection() {
             Hola, soy
           </p>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-5 gradient-text">
-            Nicolás!
+            Nicolás Ranalli
           </h1>
           <p className="text-lg md:text-xl text-[#a0b4c8] max-w-[500px] mx-auto md:mx-0 mb-8 leading-relaxed">
             Estudiante de 5to año de Ingeniería en Sistemas en la Universidad Tecnológica Nacional, apasionado por el desarrollo de software.

@@ -40,7 +40,7 @@ export default function ContactSection() {
           Contacto
         </h2>
         <p className="text-center text-[#a0b4c8] mb-12 text-base">
-          ¿Tenés un proyecto en mente? ¡Hablemos!
+          ¡Hablemos!
         </p>
 
         <div className="flex flex-col md:flex-row gap-8">
