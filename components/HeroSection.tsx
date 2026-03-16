@@ -11,7 +11,7 @@ export default function HeroSection() {
         {/* Text */}
         <div className="flex-1 text-center md:text-left">
           <p className="text-base md:text-lg text-[#7EA3CC] font-semibold mb-3 tracking-widest uppercase">
-            Hola, soy
+            Hola! Soy
           </p>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-5 gradient-text">
             Nicolás Ranalli
