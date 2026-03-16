@@ -1,131 +1,45 @@
-'use client'
-
-import { Box, Flex, Heading, Text, Image, Link } from '@chakra-ui/react'
+import { Button } from '@/components/ui/button'
 
 export default function HeroSection() {
   return (
-    <Box
+    <section
       id="hero"
-      minH="100vh"
-      display="flex"
-      alignItems="center"
-      justifyContent="center"
-      position="relative"
-      overflow="hidden"
-      pt="80px"
+      className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20"
     >
 
-
-      <Flex
-        maxW="1200px"
-        mx="auto"
-        px={{ base: '24px', md: '48px' }}
-        direction={{ base: 'column-reverse', md: 'row' }}
-        align="center"
-        justify="space-between"
-        gap={{ base: '40px', md: '80px' }}
-        w="100%"
-        className="animate-fade-in-up"
-      >
+      <div className="max-w-[1200px] mx-auto px-6 md:px-12 flex flex-col-reverse md:flex-row items-center justify-between gap-10 md:gap-20 w-full animate-fade-in-up">
         {/* Text */}
-        <Box flex="1" textAlign={{ base: 'center', md: 'left' }}>
-          <Text
-            fontSize={{ base: 'md', md: 'lg' }}
-            color="#7EA3CC"
-            fontWeight="600"
-            mb="12px"
-            letterSpacing="2px"
-            textTransform="uppercase"
-          >
+        <div className="flex-1 text-center md:text-left">
+          <p className="text-base md:text-lg text-[#7EA3CC] font-semibold mb-3 tracking-widest uppercase">
             Hola, soy
-          </Text>
-          <Heading
-            as="h1"
-            fontSize={{ base: '2.5rem', md: '3.5rem', lg: '4rem' }}
-            fontWeight="800"
-            lineHeight="1.1"
-            mb="20px"
-            className="gradient-text"
-          >
-            Tu Nombre Aquí
-          </Heading>
-          <Text
-            fontSize={{ base: 'lg', md: 'xl' }}
-            color="#a0b4c8"
-            maxW="500px"
-            mx={{ base: 'auto', md: '0' }}
-            mb="32px"
-            lineHeight="1.7"
-          >
-            Desarrollador Full Stack apasionado por crear experiencias
-            digitales modernas y funcionales.
-          </Text>
-          <Flex
-            gap="16px"
-            justify={{ base: 'center', md: 'flex-start' }}
-          >
-            <Link
-              href="#contact"
-              display="inline-flex"
-              alignItems="center"
-              justifyContent="center"
-              bg="#255C99"
-              color="white"
-              px="32px"
-              py="12px"
-              borderRadius="12px"
-              fontWeight="600"
-              fontSize="md"
-              _hover={{ bg: '#7EA3CC', transform: 'translateY(-2px)', boxShadow: '0 8px 24px rgba(37, 92, 153, 0.4)', textDecoration: 'none' }}
-              transition="all 0.3s ease"
-            >
-              Contáctame
-            </Link>
-            <Link
-              href="#projects"
-              display="inline-flex"
-              alignItems="center"
-              justifyContent="center"
-              border="1px solid #7EA3CC"
-              color="#7EA3CC"
-              px="32px"
-              py="12px"
-              borderRadius="12px"
-              fontWeight="600"
-              fontSize="md"
-              _hover={{ bg: 'rgba(126, 163, 204, 0.1)', transform: 'translateY(-2px)', textDecoration: 'none' }}
-              transition="all 0.3s ease"
-            >
-              Ver Proyectos
-            </Link>
-          </Flex>
-        </Box>
+          </p>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-5 gradient-text">
+            Nicolás!
+          </h1>
+          <p className="text-lg md:text-xl text-[#a0b4c8] max-w-[500px] mx-auto md:mx-0 mb-8 leading-relaxed">
+            Estudiante de 5to año de Ingeniería en Sistemas en la Universidad Tecnológica Nacional, apasionado por el desarrollo de software.
+          </p>
+          <div className="flex gap-4 justify-center md:justify-start">
+            <Button asChild className="bg-[#255C99] text-white px-8 py-3 h-auto rounded-xl font-semibold text-base hover:bg-[#7EA3CC] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(37,92,153,0.4)] transition-all duration-300">
+              <a href="#contact">Contáctame</a>
+            </Button>
+            <Button asChild variant="outline" className="border-[#7EA3CC] text-[#7EA3CC] px-8 py-3 h-auto rounded-xl font-semibold text-base hover:bg-[#7EA3CC]/10 hover:-translate-y-0.5 transition-all duration-300">
+              <a href="#projects">Ver Proyectos</a>
+            </Button>
+          </div>
+        </div>
 
         {/* Photo */}
-        <Box
-          flexShrink={0}
-          position="relative"
-        >
-          <Box
-            w={{ base: '200px', md: '280px' }}
-            h={{ base: '200px', md: '280px' }}
-            borderRadius="50%"
-            p="4px"
-            bg="linear-gradient(135deg, #7EA3CC, #255C99, #092749)"
-            className="animate-float"
-          >
-            <Image
-              src="https://via.placeholder.com/280x280?text=Foto"
+        <div className="shrink-0">
+          <div className="w-[200px] h-[200px] md:w-[280px] md:h-[280px] rounded-full p-1 bg-gradient-to-br from-[#7EA3CC] via-[#255C99] to-[#092749] animate-float">
+            <img
+              src="/profile-picture.jpeg"
               alt="Profile photo"
-              w="100%"
-              h="100%"
-              borderRadius="50%"
-              objectFit="cover"
-              bg="#092749"
+              className="w-full h-full rounded-full object-cover bg-[#092749]"
             />
-          </Box>
-        </Box>
-      </Flex>
-    </Box>
+          </div>
+        </div>
+      </div>
+    </section>
   )
 }

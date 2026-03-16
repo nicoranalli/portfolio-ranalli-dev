@@ -1,6 +1,3 @@
-'use client'
-
-import { Box, Flex, Heading, Text, SimpleGrid } from '@chakra-ui/react'
 import {
   FaReact, FaNodeJs, FaPython, FaGitAlt, FaDocker, FaDatabase,
 } from 'react-icons/fa'
@@ -15,10 +12,9 @@ const techStack = [
   { name: 'TypeScript', icon: SiTypescript, color: '#3178C6' },
   { name: 'JavaScript', icon: SiJavascript, color: '#F7DF1E' },
   { name: 'Node.js', icon: FaNodeJs, color: '#339933' },
-  { name: 'Python', icon: FaPython, color: '#3776AB' },
+  { name: 'Fastapi', icon: FaPython, color: '#3776AB' },
   { name: 'Tailwind CSS', icon: SiTailwindcss, color: '#06B6D4' },
   { name: 'MongoDB', icon: SiMongodb, color: '#47A248' },
-  { name: 'PostgreSQL', icon: SiPostgresql, color: '#4169E1' },
   { name: 'Git', icon: FaGitAlt, color: '#F05032' },
   { name: 'Docker', icon: FaDocker, color: '#2496ED' },
   { name: 'SQL', icon: FaDatabase, color: '#7EA3CC' },
@@ -26,62 +22,34 @@ const techStack = [
 
 export default function TechStackSection() {
   return (
-    <Box id="stack" py={{ base: '80px', md: '100px' }}>
-      <Box maxW="1200px" mx="auto" px={{ base: '24px', md: '48px' }}>
-        <Heading
-          as="h2"
-          fontSize={{ base: '1.75rem', md: '2rem' }}
-          fontWeight="700"
-          mb="16px"
-          textAlign="center"
-          color="#7EA3CC"
-        >
+    <section id="stack" className="py-20 md:py-24">
+      <div className="max-w-[1200px] mx-auto px-6 md:px-12">
+        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center text-[#7EA3CC]">
           Stack Tecnológico
-        </Heading>
-        <Text
-          textAlign="center"
-          color="#a0b4c8"
-          mb="48px"
-          fontSize="md"
-        >
+        </h2>
+        <p className="text-center text-[#a0b4c8] mb-12 text-base">
           Tecnologías y herramientas con las que trabajo
-        </Text>
+        </p>
 
-        <SimpleGrid columns={{ base: 3, sm: 4, md: 6 }} gap="20px">
+        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-5">
           {techStack.map((tech) => (
-            <Flex
+            <div
               key={tech.name}
-              direction="column"
-              align="center"
-              justify="center"
-              className="glass-card"
-              p={{ base: '20px', md: '24px' }}
-              gap="12px"
-              cursor="default"
-              role="group"
+              className="glass-card flex flex-col items-center justify-center p-5 md:p-6 gap-3 cursor-default group"
             >
-              <Box
-                fontSize={{ base: '28px', md: '36px' }}
-                color={tech.color}
-                transition="all 0.3s ease"
-                _groupHover={{ transform: 'scale(1.2)' }}
+              <div
+                className="text-3xl md:text-4xl transition-transform duration-300 group-hover:scale-125"
+                style={{ color: tech.color }}
               >
                 <tech.icon />
-              </Box>
-              <Text
-                fontSize={{ base: 'xs', md: 'sm' }}
-                fontWeight="500"
-                color="#a0b4c8"
-                textAlign="center"
-                _groupHover={{ color: '#f0f4f8' }}
-                transition="color 0.3s ease"
-              >
+              </div>
+              <span className="text-xs md:text-sm font-medium text-[#a0b4c8] text-center group-hover:text-[#f0f4f8] transition-colors duration-300">
                 {tech.name}
-              </Text>
-            </Flex>
+              </span>
+            </div>
           ))}
-        </SimpleGrid>
-      </Box>
-    </Box>
+        </div>
+      </div>
+    </section>
   )
 }

@@ -1,143 +1,97 @@
-'use client'
-
-import { Box, Flex, Heading, Text, Image, Link, SimpleGrid } from '@chakra-ui/react'
+import { Badge } from '@/components/ui/badge'
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa'
 
 const projects = [
   {
-    title: 'Proyecto 1',
-    description: 'Una aplicación web moderna construida con React y Node.js. Sistema de gestión completo con autenticación y dashboard interactivo.',
-    image: 'https://via.placeholder.com/600x340?text=Proyecto+1',
-    tags: ['React', 'Node.js', 'MongoDB'],
-    github: 'https://github.com/',
+    title: 'Agencia de Autos - Backend',
+    description: 'Sistema de gestión para una agencia de ventas desarrollado con Spring Boot.',
+    image: '',
+    tags: ['Java', 'Spring Boot', 'MySQL'],
+    github: 'https://github.com/nicoranalli/Agencia_Ventas_SpringBoot',
     demo: 'https://example.com/',
   },
   {
-    title: 'Proyecto 2',
-    description: 'API REST robusta con documentación automática. Implementación de microservicios con Docker y despliegue en la nube.',
+    title: 'Cashtracker',
+    description: 'Aplicacion que permite la creacion de una cuenta para crear presupuestos y gestionar gastos. Utilizando autenticación JWT para el control de la sesión y App Router (NextJs) para el frontend.',
     image: 'https://via.placeholder.com/600x340?text=Proyecto+2',
-    tags: ['Python', 'FastAPI', 'Docker'],
+    tags: ['Next.js', 'TypeScript', 'TailwindCSS'],
     github: 'https://github.com/',
     demo: 'https://example.com/',
   },
   {
-    title: 'Proyecto 3',
-    description: 'Plataforma de e-commerce con carrito de compras, pasarela de pagos y panel de administración.',
-    image: 'https://via.placeholder.com/600x340?text=Proyecto+3',
-    tags: ['Next.js', 'TypeScript', 'PostgreSQL'],
-    github: 'https://github.com/',
+    title: 'Ecoharmony App',
+    description: 'Implementación mobile para dar soporte a la compra de entradas de un Eco Parque, con integración con MercadoPago. Trabajo realizado para la materia Ingeniería en Calidad de Software de la carrera Ingeniería en Sistemas de Información',
+    image: '/EcoHarmony.png',
+    tags: ['React Native', 'TypeScript', 'MercadoPago'],
+    github: 'https://github.com/nicoranalli/Ecoharmony_App',
     demo: 'https://example.com/',
   },
 ]
 
 export default function ProjectsSection() {
   return (
-    <Box id="projects" py={{ base: '80px', md: '100px' }}>
-      <Box maxW="1200px" mx="auto" px={{ base: '24px', md: '48px' }}>
-        <Heading
-          as="h2"
-          fontSize={{ base: '1.75rem', md: '2rem' }}
-          fontWeight="700"
-          mb="16px"
-          textAlign="center"
-          color="#7EA3CC"
-        >
+    <section id="projects" className="py-20 md:py-24">
+      <div className="max-w-[1200px] mx-auto px-6 md:px-12">
+        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center text-[#7EA3CC]">
           Proyectos
-        </Heading>
-        <Text
-          textAlign="center"
-          color="#a0b4c8"
-          mb="48px"
-          fontSize="md"
-        >
+        </h2>
+        <p className="text-center text-[#a0b4c8] mb-12 text-base">
           Algunos de mis trabajos destacados
-        </Text>
+        </p>
 
-        <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} gap="28px">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
           {projects.map((project) => (
-            <Box
+            <div
               key={project.title}
-              className="glass-card"
-              overflow="hidden"
-              display="flex"
-              flexDirection="column"
+              className="glass-card overflow-hidden flex flex-col"
             >
-              {/* Project Image */}
-              <Box overflow="hidden" borderTopRadius="16px">
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  w="100%"
-                  h="180px"
-                  objectFit="cover"
-                  transition="transform 0.4s ease"
-                  _hover={{ transform: 'scale(1.05)' }}
-                />
-              </Box>
 
               {/* Content */}
-              <Flex direction="column" p="24px" flex="1">
-                <Text fontSize="lg" fontWeight="700" color="#f0f4f8" mb="8px">
+              <div className="flex flex-col p-6 flex-1">
+                <h3 className="text-lg font-bold text-[#f0f4f8] mb-2">
                   {project.title}
-                </Text>
-                <Text fontSize="sm" color="#a0b4c8" lineHeight="1.7" mb="16px" flex="1">
+                </h3>
+                <p className="text-sm text-[#a0b4c8] leading-relaxed mb-4 flex-1">
                   {project.description}
-                </Text>
+                </p>
 
                 {/* Tags */}
-                <Flex gap="8px" flexWrap="wrap" mb="16px">
+                <div className="flex gap-2 flex-wrap mb-4">
                   {project.tags.map((tag) => (
-                    <Box
+                    <Badge
                       key={tag}
-                      px="10px"
-                      py="4px"
-                      borderRadius="8px"
-                      bg="rgba(126, 163, 204, 0.12)"
-                      border="1px solid rgba(126, 163, 204, 0.2)"
+                      variant="outline"
+                      className="border-[#7EA3CC]/20 bg-[#7EA3CC]/12 text-[#7EA3CC] text-xs font-medium"
                     >
-                      <Text fontSize="xs" color="#7EA3CC" fontWeight="500">
-                        {tag}
-                      </Text>
-                    </Box>
+                      {tag}
+                    </Badge>
                   ))}
-                </Flex>
+                </div>
 
                 {/* Links */}
-                <Flex gap="16px">
-                  <Link
+                <div className="flex gap-4">
+                  <a
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    display="flex"
-                    alignItems="center"
-                    gap="6px"
-                    fontSize="sm"
-                    color="#a0b4c8"
-                    _hover={{ color: '#7EA3CC', textDecoration: 'none' }}
-                    transition="color 0.2s ease"
+                    className="flex items-center gap-1.5 text-sm text-[#a0b4c8] hover:text-[#7EA3CC] transition-colors"
                   >
                     <FaGithub /> Código
-                  </Link>
-                  <Link
+                  </a>
+                  <a
                     href={project.demo}
                     target="_blank"
                     rel="noopener noreferrer"
-                    display="flex"
-                    alignItems="center"
-                    gap="6px"
-                    fontSize="sm"
-                    color="#a0b4c8"
-                    _hover={{ color: '#7EA3CC', textDecoration: 'none' }}
-                    transition="color 0.2s ease"
+                    className="flex items-center gap-1.5 text-sm text-[#a0b4c8] hover:text-[#7EA3CC] transition-colors not-active"
                   >
                     <FaExternalLinkAlt /> Demo
-                  </Link>
-                </Flex>
-              </Flex>
-            </Box>
+                  </a>
+                </div>
+              </div>
+            </div>
           ))}
-        </SimpleGrid>
-      </Box>
-    </Box>
+        </div>
+      </div>
+    </section>
   )
 }

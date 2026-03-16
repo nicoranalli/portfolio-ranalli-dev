@@ -1,112 +1,65 @@
-'use client'
-
-import { Box, Flex, Heading, Text } from '@chakra-ui/react'
 import { FaGraduationCap, FaUser } from 'react-icons/fa'
 
 export default function AboutSection() {
   return (
-    <Box id="about" py={{ base: '80px', md: '100px' }}>
-      <Box maxW="1200px" my="10px" mx="auto" px={{ base: '24px', md: '48px' }}>
-        <Heading
-          as="h2"
-          fontSize={{ base: '1.75rem', md: '2rem' }}
-          fontWeight="700"
-          mb="48px"
-          textAlign="center"
-          color="#7EA3CC"
-        >
+    <section id="about" className="py-16 md:py-20">
+      <div className="max-w-[1200px] mx-auto px-6 md:px-12">
+        <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center text-[#7EA3CC]">
           Sobre Mí
-        </Heading>
+        </h2>
 
-        <Flex
-          direction={{ base: 'column', md: 'row' }}
-          gap="32px"
-          align="stretch"
-        >
+        <div className="flex flex-col md:flex-row gap-8">
           {/* About Card */}
-          <Box
-            flex="1"
-            className="glass-card"
-            p={{ base: '28px', md: '36px' }}
-          >
-            <Flex align="center" gap="12px" mb="20px">
-              <Box
-                p="10px"
-                borderRadius="12px"
-                bg="rgba(126, 163, 204, 0.15)"
-                color="#7EA3CC"
-              >
+          <div className="flex-1 glass-card p-7 md:p-9">
+            <div className="flex items-center gap-3 mb-5">
+              <div className="p-2.5 rounded-xl bg-[#7EA3CC]/15 text-[#7EA3CC]">
                 <FaUser size={20} />
-              </Box>
-              <Text fontSize="lg" fontWeight="700" color="#f0f4f8">
+              </div>
+              <span className="text-lg font-bold text-[#f0f4f8]">
                 ¿Quién soy?
-              </Text>
-            </Flex>
-            <Text
-              fontSize="md"
-              color="#a0b4c8"
-              lineHeight="1.8"
-            >
-              Soy un desarrollador apasionado por la tecnología y la
-              programación. Me interesa crear soluciones innovadoras que
-              resuelvan problemas reales. Tengo experiencia en desarrollo
-              web full stack y siempre estoy buscando aprender nuevas
-              tecnologías y mejorar mis habilidades.
-            </Text>
-          </Box>
+              </span>
+            </div>
+            <p className="text-base text-[#a0b4c8] leading-relaxed">
+              Desarrollador Junior con experiencia en Desarrollo PL/SQL en proyectos de software de gran alcance, con un amplio interés en el desarrollo Backend.
+              En búsqueda de nuevos desafíos y oportunidades para crecer profesionalmente.
+            </p>
+          </div>
 
           {/* Education Card */}
-          <Box
-            flex="1"
-            className="glass-card"
-            p={{ base: '28px', md: '36px' }}
-          >
-            <Flex align="center" gap="12px" mb="20px">
-              <Box
-                p="10px"
-                borderRadius="12px"
-                bg="rgba(126, 163, 204, 0.15)"
-                color="#7EA3CC"
-              >
+          <div className="flex-1 glass-card p-7 md:p-9">
+            <div className="flex items-center gap-3 mb-5">
+              <div className="p-2.5 rounded-xl bg-[#7EA3CC]/15 text-[#7EA3CC]">
                 <FaGraduationCap size={20} />
-              </Box>
-              <Text fontSize="lg" fontWeight="700" color="#f0f4f8">
+              </div>
+              <span className="text-lg font-bold text-[#f0f4f8]">
                 Formación Académica
-              </Text>
-            </Flex>
-            <Flex direction="column" gap="16px">
-              <Box
-                pl="16px"
-                borderLeft="2px solid #255C99"
-              >
-                <Text fontSize="md" fontWeight="600" color="#f0f4f8">
-                  Ingeniería en Sistemas / Lic. en Informática
-                </Text>
-                <Text fontSize="sm" color="#7EA3CC">
-                  Universidad Placeholder • 2020 - 2025
-                </Text>
-                <Text fontSize="sm" color="#a0b4c8" mt="4px">
-                  Enfoque en desarrollo de software y arquitectura de sistemas.
-                </Text>
-              </Box>
-              <Box
-                pl="16px"
-                borderLeft="2px solid rgba(126, 163, 204, 0.3)"
-              >
-                <Text fontSize="md" fontWeight="600" color="#f0f4f8">
-                  Curso / Certificación Placeholder
-                </Text>
-                <Text fontSize="sm" color="#7EA3CC">
-                  Plataforma Educativa • 2023
-                </Text>
-                <Text fontSize="sm" color="#a0b4c8" mt="4px">
-                  Especialización en tecnologías web modernas.
-                </Text>
-              </Box>
-            </Flex>
-          </Box>
-        </Flex>
-      </Box>
-    </Box>
+              </span>
+            </div>
+            <div className="flex flex-col gap-4">
+              <div className="pl-4 border-l-2 border-[#255C99]">
+                <p className="text-base font-semibold text-[#f0f4f8]">
+                  Ingeniería en Sistemas de Información
+                </p>
+                <p className="text-sm text-[#7EA3CC]">
+                  Universidad Tecnológica Nacional - Córdoba • 2020 - 2026
+                </p>
+                <p className="text-sm text-[#a0b4c8] mt-1">
+                  En proceso de tesis - Promedio: 8.54
+                </p>
+
+              </div>
+              <div className="pl-4 border-l-2 border-[#7EA3CC]/30">
+                <p className="text-base font-semibold text-[#f0f4f8]">
+                  Full Stack Node.js React TS NestJS Next.js Creando Proyectos
+                </p>
+                <p className="text-sm text-[#7EA3CC]">
+                  Curso realizado en Udemy • 2025
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   )
 }

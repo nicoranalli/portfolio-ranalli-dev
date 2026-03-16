@@ -1,13 +1,15 @@
 'use client'
 
 import { useState, FormEvent } from 'react'
-import { Box, Flex, Heading, Text, Input, Textarea, Button, Link } from '@chakra-ui/react'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Textarea } from '@/components/ui/textarea'
 import { FaEnvelope, FaGithub, FaLinkedin, FaInstagram } from 'react-icons/fa'
 
 const socialContacts = [
-  { icon: FaGithub, label: 'GitHub', href: 'https://github.com/', username: '@tuusuario' },
-  { icon: FaLinkedin, label: 'LinkedIn', href: 'https://linkedin.com/in/', username: '/in/tuusuario' },
-  { icon: FaInstagram, label: 'Instagram', href: 'https://instagram.com/', username: '@tuusuario' },
+  { icon: FaGithub, label: 'GitHub', href: 'https://github.com/nicoranalli', username: '@nicoranalli' },
+  { icon: FaLinkedin, label: 'LinkedIn', href: 'https://linkedin.com/in/nicolas-ranalli', username: '/in/nicolas-ranalli' },
+  { icon: FaInstagram, label: 'Instagram', href: 'https://instagram.com/nicoranalli_', username: '@nicoranalli_' },
 ]
 
 export default function ContactSection() {
@@ -18,12 +20,11 @@ export default function ContactSection() {
     e.preventDefault()
     setStatus('sending')
 
-    // Build mailto link and open it
     const subject = encodeURIComponent(`Contacto desde Portfolio - ${formData.name}`)
     const body = encodeURIComponent(
       `Nombre: ${formData.name}\nEmail: ${formData.email}\n\nMensaje:\n${formData.message}`
     )
-    const mailtoLink = `mailto:placeholder@email.com?subject=${subject}&body=${body}`
+    const mailtoLink = `mailto:nicoranalli9@gmail.com?subject=${subject}&body=${body}`
 
     window.open(mailtoLink, '_blank')
     setStatus('sent')
@@ -33,193 +34,116 @@ export default function ContactSection() {
   }
 
   return (
-    <Box id="contact" py={{ base: '80px', md: '100px' }}>
-      <Box maxW="1200px" mx="auto" px={{ base: '24px', md: '48px' }}>
-        <Heading
-          as="h2"
-          fontSize={{ base: '1.75rem', md: '2rem' }}
-          fontWeight="700"
-          mb="16px"
-          textAlign="center"
-          color="#7EA3CC"
-        >
+    <section id="contact" className="py-20 md:py-24">
+      <div className="max-w-[1200px] mx-auto px-6 md:px-12">
+        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center text-[#7EA3CC]">
           Contacto
-        </Heading>
-        <Text
-          textAlign="center"
-          color="#a0b4c8"
-          mb="48px"
-          fontSize="md"
-        >
+        </h2>
+        <p className="text-center text-[#a0b4c8] mb-12 text-base">
           ¿Tenés un proyecto en mente? ¡Hablemos!
-        </Text>
+        </p>
 
-        <Flex
-          direction={{ base: 'column', md: 'row' }}
-          gap="32px"
-          align="stretch"
-        >
+        <div className="flex flex-col md:flex-row gap-8">
           {/* Contact Form */}
-          <Box flex="1" className="glass-card" p={{ base: '28px', md: '36px' }}>
-            <form onSubmit={handleSubmit}>
-              <Flex direction="column" gap="20px">
-                <Box>
-                  <Text fontSize="sm" fontWeight="600" color="#f0f4f8" mb="8px">
-                    Nombre
-                  </Text>
-                  <Input
-                    placeholder="Tu nombre"
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    required
-                    bg="rgba(9, 39, 73, 0.3)"
-                    border="1px solid rgba(126, 163, 204, 0.2)"
-                    borderRadius="12px"
-                    color="#f0f4f8"
-                    px="16px"
-                    py="12px"
-                    _hover={{ borderColor: 'rgba(126, 163, 204, 0.4)' }}
-                    _focus={{ borderColor: '#7EA3CC', boxShadow: '0 0 0 1px #7EA3CC' }}
-                    _placeholder={{ color: '#5a7a96' }}
-                    transition="all 0.2s ease"
-                  />
-                </Box>
-                <Box>
-                  <Text fontSize="sm" fontWeight="600" color="#f0f4f8" mb="8px">
-                    Email
-                  </Text>
-                  <Input
-                    type="email"
-                    placeholder="tu@email.com"
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    required
-                    bg="rgba(9, 39, 73, 0.3)"
-                    border="1px solid rgba(126, 163, 204, 0.2)"
-                    borderRadius="12px"
-                    color="#f0f4f8"
-                    px="16px"
-                    py="12px"
-                    _hover={{ borderColor: 'rgba(126, 163, 204, 0.4)' }}
-                    _focus={{ borderColor: '#7EA3CC', boxShadow: '0 0 0 1px #7EA3CC' }}
-                    _placeholder={{ color: '#5a7a96' }}
-                    transition="all 0.2s ease"
-                  />
-                </Box>
-                <Box>
-                  <Text fontSize="sm" fontWeight="600" color="#f0f4f8" mb="8px">
-                    Mensaje
-                  </Text>
-                  <Textarea
-                    placeholder="Contame sobre tu proyecto..."
-                    value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    required
-                    rows={5}
-                    bg="rgba(9, 39, 73, 0.3)"
-                    border="1px solid rgba(126, 163, 204, 0.2)"
-                    borderRadius="12px"
-                    color="#f0f4f8"
-                    px="16px"
-                    py="12px"
-                    _hover={{ borderColor: 'rgba(126, 163, 204, 0.4)' }}
-                    _focus={{ borderColor: '#7EA3CC', boxShadow: '0 0 0 1px #7EA3CC' }}
-                    _placeholder={{ color: '#5a7a96' }}
-                    transition="all 0.2s ease"
-                    resize="vertical"
-                  />
-                </Box>
-                <Button
-                  type="submit"
-                  bg="#255C99"
-                  color="white"
-                  py="12px"
-                  borderRadius="12px"
-                  fontWeight="600"
-                  fontSize="md"
-                  _hover={{ bg: '#7EA3CC', transform: 'translateY(-2px)', boxShadow: '0 8px 24px rgba(37, 92, 153, 0.4)' }}
-                  transition="all 0.3s ease"
-                  disabled={status === 'sending'}
-                  w="100%"
-                >
-                  {status === 'sending' ? 'Enviando...' : status === 'sent' ? '¡Mensaje enviado!' : 'Enviar Mensaje'}
-                </Button>
-                {status === 'sent' && (
-                  <Text fontSize="sm" color="#7EA3CC" textAlign="center">
-                    Se abrió tu cliente de email con el mensaje. ¡Gracias!
-                  </Text>
-                )}
-              </Flex>
+          <div className="flex-1 glass-card p-7 md:p-9">
+            <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+              <div>
+                <label className="text-sm font-semibold text-[#f0f4f8] mb-2 block">
+                  Nombre
+                </label>
+                <Input
+                  placeholder="Tu nombre"
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  required
+                  className="bg-[#092749]/30 border-[#7EA3CC]/20 text-[#f0f4f8] placeholder:text-[#5a7a96] rounded-xl h-11 px-4 focus-visible:border-[#7EA3CC] focus-visible:ring-[#7EA3CC]/30"
+                />
+              </div>
+              <div>
+                <label className="text-sm font-semibold text-[#f0f4f8] mb-2 block">
+                  Email
+                </label>
+                <Input
+                  type="email"
+                  placeholder="tu@email.com"
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  required
+                  className="bg-[#092749]/30 border-[#7EA3CC]/20 text-[#f0f4f8] placeholder:text-[#5a7a96] rounded-xl h-11 px-4 focus-visible:border-[#7EA3CC] focus-visible:ring-[#7EA3CC]/30"
+                />
+              </div>
+              <div>
+                <label className="text-sm font-semibold text-[#f0f4f8] mb-2 block">
+                  Mensaje
+                </label>
+                <Textarea
+                  placeholder="Contame sobre tu proyecto..."
+                  value={formData.message}
+                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  required
+                  rows={5}
+                  className="bg-[#092749]/30 border-[#7EA3CC]/20 text-[#f0f4f8] placeholder:text-[#5a7a96] rounded-xl px-4 py-3 resize-y focus-visible:border-[#7EA3CC] focus-visible:ring-[#7EA3CC]/30"
+                />
+              </div>
+              <Button
+                type="submit"
+                disabled={status === 'sending'}
+                className="w-full bg-[#255C99] text-white py-3 h-auto rounded-xl font-semibold text-base hover:bg-[#7EA3CC] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(37,92,153,0.4)] transition-all duration-300"
+              >
+                {status === 'sending' ? 'Enviando...' : status === 'sent' ? '¡Mensaje enviado!' : 'Enviar Mensaje'}
+              </Button>
+              {status === 'sent' && (
+                <p className="text-sm text-[#7EA3CC] text-center">
+                  Se abrió tu cliente de email con el mensaje. ¡Gracias!
+                </p>
+              )}
             </form>
-          </Box>
+          </div>
 
           {/* Contact Info */}
-          <Flex
-            flex="1"
-            direction="column"
-            gap="20px"
-            justify="center"
-          >
+          <div className="flex-1 flex flex-col gap-5 justify-center">
             {/* Email */}
-            <Box className="glass-card" p="24px">
-              <Flex align="center" gap="16px">
-                <Box
-                  p="12px"
-                  borderRadius="12px"
-                  bg="rgba(126, 163, 204, 0.15)"
-                  color="#7EA3CC"
-                >
+            <div className="glass-card p-6">
+              <div className="flex items-center gap-4">
+                <div className="p-3 rounded-xl bg-[#7EA3CC]/15 text-[#7EA3CC]">
                   <FaEnvelope size={20} />
-                </Box>
-                <Box>
-                  <Text fontSize="sm" color="#a0b4c8">Email</Text>
-                  <Link
+                </div>
+                <div>
+                  <p className="text-sm text-[#a0b4c8]">Email</p>
+                  <a
                     href="mailto:placeholder@email.com"
-                    fontSize="md"
-                    fontWeight="600"
-                    color="#f0f4f8"
-                    _hover={{ color: '#7EA3CC', textDecoration: 'none' }}
-                    transition="color 0.2s ease"
+                    className="text-base font-semibold text-[#f0f4f8] hover:text-[#7EA3CC] transition-colors"
                   >
-                    placeholder@email.com
-                  </Link>
-                </Box>
-              </Flex>
-            </Box>
+                    nicoranalli9@gmail.com
+                  </a>
+                </div>
+              </div>
+            </div>
 
             {/* Social Links */}
             {socialContacts.map((social) => (
-              <Box key={social.label} className="glass-card" p="24px">
-                <Flex align="center" gap="16px">
-                  <Box
-                    p="12px"
-                    borderRadius="12px"
-                    bg="rgba(126, 163, 204, 0.15)"
-                    color="#7EA3CC"
-                  >
+              <div key={social.label} className="glass-card p-6">
+                <div className="flex items-center gap-4">
+                  <div className="p-3 rounded-xl bg-[#7EA3CC]/15 text-[#7EA3CC]">
                     <social.icon size={20} />
-                  </Box>
-                  <Box>
-                    <Text fontSize="sm" color="#a0b4c8">{social.label}</Text>
-                    <Link
+                  </div>
+                  <div>
+                    <p className="text-sm text-[#a0b4c8]">{social.label}</p>
+                    <a
                       href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      fontSize="md"
-                      fontWeight="600"
-                      color="#f0f4f8"
-                      _hover={{ color: '#7EA3CC', textDecoration: 'none' }}
-                      transition="color 0.2s ease"
+                      className="text-base font-semibold text-[#f0f4f8] hover:text-[#7EA3CC] transition-colors"
                     >
                       {social.username}
-                    </Link>
-                  </Box>
-                </Flex>
-              </Box>
+                    </a>
+                  </div>
+                </div>
+              </div>
             ))}
-          </Flex>
-        </Flex>
-      </Box>
-    </Box>
+          </div>
+        </div>
+      </div>
+    </section>
   )
 }
